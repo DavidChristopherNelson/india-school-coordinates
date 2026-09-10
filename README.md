@@ -11,12 +11,19 @@ coordinates for all operational schools.
 ## Getting the data
 
 The full CSV is ~962 MB (156 MB gzipped) — too large for the git tree, so it ships as a **Release
-asset**. Download the latest from the [Releases](../../releases) page:
+asset**.
+
+**Easiest way (no command line):** open the release page and click the file to download it:
+**https://github.com/DavidChristopherNelson/india-school-coordinates/releases/latest** — under
+**Assets**, click `schools_india_with_coords.csv.gz`. It downloads gzipped (156 MB); most computers
+open a `.gz` by double-clicking, which expands it to the full `.csv`.
+
+**Command line:**
 
 ```bash
 # gzipped (156 MB)
 curl -L -o schools_india_with_coords.csv.gz \
-  https://github.com/<owner>/india-school-coordinates/releases/latest/download/schools_india_with_coords.csv.gz
+  https://github.com/DavidChristopherNelson/india-school-coordinates/releases/latest/download/schools_india_with_coords.csv.gz
 gunzip schools_india_with_coords.csv.gz
 ```
 
