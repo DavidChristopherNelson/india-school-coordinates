@@ -25,24 +25,32 @@ downloading the full file.
 
 ## Columns (67)
 
-Directory fields first, then coordinates, then the full set of fields returned per school.
+Directory fields first, then coordinates, then the full set of fields returned per school. The
+**example** column shows one real row — `3 R'S PUBLIC SCHOOL BARA CHANDGANJ LUCKNOW` (a private
+primary school in Lucknow, Uttar Pradesh).
 
-| column | meaning |
-|---|---|
-| `udise_code` | 11-digit UDISE school code (primary key) |
-| `school_name` | school name |
-| `state_code`, `state` | UDISE state code + name |
-| `district_code`, `district` | UDISE district code + name |
-| `block_code`, `block` | UDISE block code + name |
-| `village_or_ward`, `cluster` | village/ward, cluster |
-| `category`, `management`, `school_type`, `location` | school category / management / type / rural-urban |
-| `status` | Operational / Closed / Merged / etc. |
-| `pincode` | postal code |
-| **`latitude`, `longitude`** | **GPS coordinates (decimal degrees); blank for non-operational schools** |
-| `coord_source` | `kys_by_year` where a coordinate is present |
-| `coord_pulled_at` | when the coordinate was fetched (UTC) |
-| `schoolId` | KYS internal id (the key used to fetch coordinates) |
-| … | the remaining columns are every other field the source returns per school: management/type/category ids and descriptions, `isOperational2018To19`…`2022To23`, class range, `address`, `email`, the full `lgd*` local-government fields, `lastmodifiedTime`, etc. See `data/sample_1000.csv`. |
+| column | meaning | example |
+|---|---|---|
+| `udise_code` | 11-digit UDISE school code (primary key) | `09270912620` |
+| `school_name` | school name | `3 r'S PUBLIC SCHOOL BARA CHANDGANJ LUCKNOW` |
+| `state_code`, `state` | UDISE state code + name | `09`, `UTTAR PRADESH` |
+| `district_code`, `district` | UDISE district code + name | `0927`, `LUCKNOW` |
+| `block_code`, `block` | UDISE block code + name | `092712`, `NAGAR KSHETRA ZONE-3` |
+| `village_or_ward`, `cluster` | village/ward, cluster | `WARD 109`, `CHHAVNI MANIYAON` |
+| `category`, `management`, `school_type`, `location` | school category / management / type / rural-urban | `Primary`, `Private Unaided (Recognized)`, `3-Co-educational`, `Urban` |
+| `status` | Operational / Closed / Merged / etc. | `Operational` |
+| `pincode` | postal code | `226018` |
+| **`latitude`, `longitude`** | **GPS coordinates (decimal degrees); blank for non-operational schools** | **`26.87782`, `80.99698`** |
+| `coord_source` | `kys_by_year` where a coordinate is present | `kys_by_year` |
+| `coord_pulled_at` | when the coordinate was fetched (UTC) | `2026-09-03T17:07:31+00:00` |
+| `schoolId` | KYS internal id (the key used to fetch coordinates) | `2189009` |
+| `classFrm`, `classTo` | lowest / highest class taught | `1`, `5` |
+| `address` | street address | `521/50 3rS Public School Bada Chandganj Lucknow` |
+| `email` | contact email (source obfuscates `@`/`.`) | `3rspublicschool.lko[at]gmail[dot]com` |
+| `lgdurbanlocalbodyName`, `lgdwardName` | local-government urban body / ward | `Lucknow-Municipal Corporations`, `Lucknow (M Corp.) - Ward No.2` |
+| `sessionYear`, `yearId` | academic session of the record | `2026-27`, `13` |
+| `lastmodifiedTime` | when the source last touched the record | `2026-08-13 18:05:58` |
+| … | the remaining columns are every other field the source returns: management/type/category ids (`schMgmtId=5`, `schCategoryId=1`, `schType=3`), the `isOperational2018To19`…`2022To23` history, `villageId`/`clusterId`, and the rest of the `lgd*` local-government ids. See `data/sample_1000.csv` for a full 1,000-row sample. |
 
 ## Provenance & caveats
 
