@@ -1,0 +1,4 @@
+# Full dataset ships as a GitHub Release asset, not in the git tree (too large for normal git)
+schools_india_with_coords.csv
+schools_india_with_coords.csv.gz
+*.csv.gz
